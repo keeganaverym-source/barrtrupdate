@@ -111,9 +111,20 @@ function submitOffer() {
 document.querySelectorAll('.category-card').forEach(card => {
   card.addEventListener('click', function() {
     const category = this.getAttribute('data-category');
-    window.location.href = `browse.html?category=${category}`;
+    if (category) {
+      window.location.href = `browse.html?category=${category}`;
+    }
   });
 });
+
+function checkLoginStatus() {
+  const user = localStorage.getItem('bartr_user');
+  if (!user && window.location.pathname.includes('messaging')) {
+    window.location.href = 'login.html';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', checkLoginStatus);
 
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
