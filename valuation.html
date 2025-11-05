@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">  <boltAction type="file" filePath="valuation.html" operation="write_to_file"><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Item Valuation - Bartr</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50">
+  <header class="bg-white/80 backdrop-blur-xl sticky top-0 z-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <div class="flex items-center justify-between gap-4">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-10 h-10 bg-gradient-to-br from-[#1db5a9] to-[#2dd4bf] rounded-xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+            </svg>
+          </div>
+          <span class="text-2xl font-black text-gray-900">BARTR</span>
+        </a>
+        <div class="flex items-center gap-3">
+          <button onclick="toggleMenu()" class="icon-btn">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">AI Item Valuation</h1>
+        <p class="text-xl text-gray-600">Get an instant estimate of your item's trade value</p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 border-2 border-gray-100 mb-8">
+        <form id="valuation-form" class="space-y-6">
+          <div>
+            <label class="block text-sm font-bold text-gray-900 mb-2">Item Category</label>
+            <select id="item-category" required class="profile-input">
+              <option value="">Select a category</option>
+              <option value="electronics">Electronics</option>
+              <option value="fashion">Fashion & Apparel</option>
+              <option value="home">Home & Garden</option>
+              <option value="sports">Sports & Outdoors</option>
+              <option value="books">Books & Media</option>
+              <option value="art">Art & Collectibles</option>
+              <option value="music">Musical Instruments</option>
+              <option value="tools">Tools & Equipment</option>
+              <option value="toys">Toys & Games</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-bold text-gray-900 mb-2">Item Name/Brand</label>
+            <input type="text" id="item-name" required class="profile-input" placeholder="e.g., Apple MacBook Pro 2020">
+          </div>
+
+          <div>
+            <label class="block text-sm font-bold text-gray-900 mb-2">Condition</label>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+              <label class="condition-option">
+                <input type="radio" name="condition" value="new" required>
+                <div class="condition-content">
+                  <span class="font-semibold">New</span>
+                  <span class="text-xs">Unused</span>
+                </div>
+              </label>
+              <label class="condition-option">
+                <input type="radio" name="condition" value="like-new" required>
+                <div class="condition-content">
+                  <span class="font-semibold">Like New</span>
+                  <span class="text-xs">Mint</span>
+                </div>
+              </label>
+              <label class="condition-option">
+                <input type="radio" name="condition" value="excellent" required>
+                <div class="condition-content">
+                  <span class="font-semibold">Excellent</span>
+                  <span class="text-xs">Minor wear</span>
+                </div>
+              </label>
+              <label class="condition-option">
+                <input type="radio" name="condition" value="good" required>
+                <div class="condition-content">
+                  <span class="font-semibold">Good</span>
+                  <span class="text-xs">Used</span>
+                </div>
+              </label>
+              <label class="condition-option">
+                <input type="radio" name="condition" value="fair" required>
+                <div class="condition-content">
+                  <span class="font-semibold">Fair</span>
+                  <span class="text-xs">Well used</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-bold text-gray-900 mb-2">Original Purchase Price (Optional)</label>
+            <div class="relative">
+              <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+              <input type="number" id="original-price" class="profile-input pl-8" placeholder="0.00">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-bold text-gray-900 mb-2">Age of Item</label>
+            <select id="item-age" required class="profile-input">
+              <option value="">Select age</option>
+              <option value="0-6">Less than 6 months</option>
+              <option value="6-12">6-12 months</option>
+              <option value="1-2">1-2 years</option>
+              <option value="2-5">2-5 years</option>
+              <option value="5+">5+ years</option>
+              <option value="vintage">Vintage/Antique</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-bold text-gray-900 mb-2">Additional Details</label>
+            <textarea id="item-details" rows="4" class="profile-input" placeholder="Any additional information that might affect value (accessories, defects, special features, etc.)"></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary-modern w-full">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+            </svg>
+            Get Valuation
+          </button>
+        </form>
+      </div>
+
+      <div id="valuation-result" class="hidden">
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 border-2 border-blue-200 mb-6">
+          <div class="text-center mb-6">
+            <h2 class="text-2xl font-black text-gray-900 mb-2">Estimated Trade Value</h2>
+            <div class="text-6xl font-black text-primary mb-2" id="estimated-value">$0</div>
+            <p class="text-gray-600">Based on current market data</p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-4 mb-6">
+            <div class="bg-white rounded-2xl p-4 text-center">
+              <div class="text-sm text-gray-600 mb-1">Low Range</div>
+              <div class="text-2xl font-bold text-gray-900" id="low-value">$0</div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 text-center border-2 border-primary">
+              <div class="text-sm text-gray-600 mb-1">Average</div>
+              <div class="text-2xl font-bold text-primary" id="avg-value">$0</div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 text-center">
+              <div class="text-sm text-gray-600 mb-1">High Range</div>
+              <div class="text-2xl font-bold text-gray-900" id="high-value">$0</div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6">
+            <h3 class="font-bold text-gray-900 mb-4">Valuation Breakdown</h3>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-gray-700">Base Market Value</span>
+                <span class="font-semibold text-gray-900" id="base-value">$0</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-700">Condition Adjustment</span>
+                <span class="font-semibold" id="condition-adjustment">0%</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-700">Age Depreciation</span>
+                <span class="font-semibold text-red-600" id="age-depreciation">-0%</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-gray-700">Market Demand</span>
+                <span class="font-semibold" id="demand-factor">Normal</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-yellow-50 border-2 border-yellow-200 rounded-2xl p-6 mb-6">
+          <div class="flex gap-3">
+            <svg class="w-6 h-6 text-yellow-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <div>
+              <h4 class="font-bold text-gray-900 mb-2">Tips to Maximize Value</h4>
+              <ul class="space-y-1 text-sm text-gray-700">
+                <li>• Include high-quality photos from multiple angles</li>
+                <li>• Provide detailed condition description</li>
+                <li>• Include original packaging and accessories if available</li>
+                <li>• Be transparent about any defects or issues</li>
+                <li>• Research similar completed trades for comparison</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <button onclick="resetValuation()" class="btn-secondary-modern flex-1">
+            Value Another Item
+          </button>
+          <button onclick="createListing()" class="btn-primary-modern flex-1">
+            Create Listing
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="shared.js"></script>
+  <script src="valuation.js"></script>
+</body>
+</html>
