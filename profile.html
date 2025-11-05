@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile - Bartr</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="bg-white/80 backdrop-blur-xl sticky top-0 z-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <div class="flex items-center justify-between gap-4">
+        <div class="flex items-center gap-8">
+          <a href="index.html" class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-gradient-to-br from-[#1db5a9] to-[#2dd4bf] rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+              </svg>
+            </div>
+            <span class="text-2xl font-black text-gray-900">BARTR</span>
+          </a>
+        </div>
+        
+        <div class="flex items-center gap-3">
+          <button onclick="toggleNotifications()" class="icon-btn hidden md:flex">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+            </svg>
+            <span class="notification-badge">3</span>
+          </button>
+          <button onclick="toggleMenu()" class="icon-btn">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+          <button onclick="openProfileModal()" class="profile-avatar">
+            <img src="https://i.pravatar.cc/150?img=12" alt="Profile" class="w-full h-full object-cover">
+            <div class="status-indicator"></div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Profile Content -->
+  <section class="py-12">
+    <div class="max-w-5xl mx-auto px-4">
+      <!-- Profile Header -->
+      <div class="bg-white rounded-3xl p-8 mb-6 border-2 border-gray-100">
+        <div class="flex flex-col md:flex-row gap-8 items-start">
+          <div class="relative">
+            <img id="profile-avatar" src="https://i.pravatar.cc/150?img=45" alt="Profile" class="w-32 h-32 rounded-3xl border-4 border-gray-100">
+            <div class="absolute -bottom-2 -right-2 w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+          </div>
+          
+          <div class="flex-1">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h1 id="profile-name" class="text-3xl font-black text-gray-900 mb-2">Sarah Kim</h1>
+                <p id="profile-location" class="text-gray-600 flex items-center gap-2">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  San Francisco, CA
+                </p>
+              </div>
+              
+              <div class="flex gap-2">
+                <button onclick="openMessageModal()" class="btn-primary-modern">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                  </svg>
+                  Message
+                </button>
+                <button onclick="addFriend('Sarah Kim')" class="btn-secondary-modern">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+                  </svg>
+                  Add Friend
+                </button>
+              </div>
+            </div>
+            
+            <p id="profile-bio" class="text-gray-700 mb-6">
+              Graphic designer and coffee enthusiast. Love trading design work for unique items and experiences. Always looking for vintage cameras and art supplies!
+            </p>
+            
+            <div class="flex flex-wrap gap-6 mb-6">
+              <div class="flex items-center gap-2">
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                  <span id="profile-rating" class="font-bold text-gray-900 ml-1">4.9</span>
+                </div>
+                <span class="text-gray-600">(<span id="profile-reviews">47</span> reviews)</span>
+              </div>
+              
+              <div class="flex items-center gap-2 text-gray-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                </svg>
+                <span id="profile-trades" class="font-semibold">124</span> trades
+              </div>
+              
+              <div class="flex items-center gap-2 text-gray-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Member since <span id="profile-joined" class="font-semibold">Jan 2024</span>
+              </div>
+            </div>
+            
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag">Graphic Design</span>
+              <span class="skill-tag">Logo Design</span>
+              <span class="skill-tag">Illustration</span>
+              <span class="skill-tag">Photography</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="bg-white rounded-3xl border-2 border-gray-100 overflow-hidden mb-6">
+        <div class="flex border-b border-gray-100">
+          <button class="profile-tab active" data-tab="listings">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+            </svg>
+            Active Listings
+          </button>
+          <button class="profile-tab" data-tab="reviews">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+            </svg>
+            Reviews
+          </button>
+          <button class="profile-tab" data-tab="friends">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+            Friends
+          </button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="p-6">
+          <!-- Listings Tab -->
+          <div id="listings-tab" class="tab-content active">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="trade-card-modern">
+                <div class="trade-card-image-modern">
+                  <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80" alt="Design Services" class="w-full h-full object-cover">
+                </div>
+                <div class="trade-card-content-modern">
+                  <div class="flex items-start justify-between mb-3">
+                    <div class="flex-1">
+                      <h3 class="text-lg font-bold text-gray-900 mb-1">Logo Design Package</h3>
+                      <p class="text-sm text-gray-600">Want: Web Development</p>
+                    </div>
+                    <span class="value-badge">$500</span>
+                  </div>
+                  <button class="btn-trade-modern">View Details</button>
+                </div>
+              </div>
+
+              <div class="trade-card-modern">
+                <div class="trade-card-image-modern">
+                  <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&q=80" alt="Illustration" class="w-full h-full object-cover">
+                </div>
+                <div class="trade-card-content-modern">
+                  <div class="flex items-start justify-between mb-3">
+                    <div class="flex-1">
+                      <h3 class="text-lg font-bold text-gray-900 mb-1">Custom Illustration</h3>
+                      <p class="text-sm text-gray-600">Want: Vintage Camera</p>
+                    </div>
+                    <span class="value-badge">$300</span>
+                  </div>
+                  <button class="btn-trade-modern">View Details</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reviews Tab -->
+          <div id="reviews-tab" class="tab-content">
+            <div class="space-y-4">
+              <div class="review-card">
+                <div class="flex items-start gap-4">
+                  <img src="https://i.pravatar.cc/150?img=33" alt="Reviewer" class="w-12 h-12 rounded-full">
+                  <div class="flex-1">
+                    <div class="flex items-center justify-between mb-2">
+                      <div>
+                        <h4 class="font-bold text-gray-900">Alex Chen</h4>
+                        <div class="flex items-center gap-1">
+                          <div class="flex">
+                            <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                          </div>
+                        </div>
+                      </div>
+                      <span class="text-sm text-gray-500">2 days ago</span>
+                    </div>
+                    <p class="text-gray-700">Amazing designer! The logo she created exceeded my expectations. Communication was great and the trade was smooth. Highly recommend!</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="review-card">
+                <div class="flex items-start gap-4">
+                  <img src="https://i.pravatar.cc/150?img=22" alt="Reviewer" class="w-12 h-12 rounded-full">
+                  <div class="flex-1">
+                    <div class="flex items-center justify-between mb-2">
+                      <div>
+                        <h4 class="font-bold text-gray-900">Mike Johnson</h4>
+                        <div class="flex items-center gap-1">
+                          <div class="flex">
+                            <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 text-gray-300 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                          </div>
+                        </div>
+                      </div>
+                      <span class="text-sm text-gray-500">1 week ago</span>
+                    </div>
+                    <p class="text-gray-700">Great trade experience. Sarah was professional and delivered exactly what was promised. Would definitely trade again!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Friends Tab -->
+          <div id="friends-tab" class="tab-content">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div class="friend-card" onclick="viewProfile('Alex Chen', 33)">
+                <img src="https://i.pravatar.cc/150?img=33" alt="Friend" class="w-full aspect-square object-cover rounded-2xl mb-3">
+                <h4 class="font-bold text-gray-900 text-sm">Alex Chen</h4>
+                <p class="text-xs text-gray-600">87 trades</p>
+              </div>
+              <div class="friend-card" onclick="viewProfile('Mike Johnson', 22)">
+                <img src="https://i.pravatar.cc/150?img=22" alt="Friend" class="w-full aspect-square object-cover rounded-2xl mb-3">
+                <h4 class="font-bold text-gray-900 text-sm">Mike Johnson</h4>
+                <p class="text-xs text-gray-600">52 trades</p>
+              </div>
+              <div class="friend-card" onclick="viewProfile('Emma Davis', 68)">
+                <img src="https://i.pravatar.cc/150?img=68" alt="Friend" class="w-full aspect-square object-cover rounded-2xl mb-3">
+                <h4 class="font-bold text-gray-900 text-sm">Emma Davis</h4>
+                <p class="text-xs text-gray-600">143 trades</p>
+              </div>
+              <div class="friend-card" onclick="viewProfile('David Lee', 15)">
+                <img src="https://i.pravatar.cc/150?img=15" alt="Friend" class="w-full aspect-square object-cover rounded-2xl mb-3">
+                <h4 class="font-bold text-gray-900 text-sm">David Lee</h4>
+                <p class="text-xs text-gray-600">96 trades</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Message Modal -->
+  <div id="quick-message-modal" class="modal-modern">
+    <div class="modal-overlay" onclick="closeMessageModal()"></div>
+    <div class="modal-container max-w-md">
+      <div class="modal-header-modern">
+        <h3 class="text-2xl font-black text-gray-900">Send Message</h3>
+        <button onclick="closeMessageModal()" class="close-btn">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="modal-body-modern">
+        <textarea rows="6" placeholder="Type your message..." class="profile-input mb-4"></textarea>
+        <div class="flex gap-3">
+          <button onclick="closeMessageModal()" class="btn-secondary-modern flex-1">Cancel</button>
+          <button onclick="sendQuickMessage()" class="btn-primary-modern flex-1">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="profile.js"></script>
+</body>
+</html>
